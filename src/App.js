@@ -1,7 +1,13 @@
-import { Menu } from "components/Menu";
+import { Nav } from "components/Nav";
+import { Routing } from "pages/routing";
 
 const App = () => {
-  return <Menu />;
+  return (
+    <>
+      <Nav />
+      <Routing />
+    </>
+  );
 };
 
 export default App;

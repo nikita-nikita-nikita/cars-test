@@ -1,29 +1,19 @@
 import NavComponent from "react-bootstrap/Nav";
-import { CARS_ENUM } from "../../services/carsData";
+import { CARS_ENUM } from "services/carsData";
+import { NavLink } from "react-router-dom";
+import { routing } from "pages/routing";
+import { generatePath } from "react-router-dom";
 
-export const Nav = ({ selectType, selectedType }) => {
+export const Nav = () => {
   return (
-    <NavComponent
-      onSelect={selectType}
-      activeKey={selectedType}
-      variant="tabs"
-      className="justify-content-around"
-    >
-      <NavComponent.Item>
-        <NavComponent.Link eventKey={CARS_ENUM.SPORT}>
-          {CARS_ENUM.SPORT}
-        </NavComponent.Link>
-      </NavComponent.Item>
-      <NavComponent.Item>
-        <NavComponent.Link eventKey={CARS_ENUM.TWO_WHEELS}>
-          {CARS_ENUM.TWO_WHEELS}
-        </NavComponent.Link>
-      </NavComponent.Item>
-      <NavComponent.Item>
-        <NavComponent.Link eventKey={CARS_ENUM.ELECTRIC}>
-          {CARS_ENUM.ELECTRIC}
-        </NavComponent.Link>
-      </NavComponent.Item>
+    <NavComponent variant="tabs" className="justify-content-around">
+      {Object.values(CARS_ENUM).map((type) => (
+        <NavComponent.Item key={type}>
+          <NavLink to={generatePath(routing.cars.url, { type })}>
+            {type}
+          </NavLink>
+        </NavComponent.Item>
+      ))}
     </NavComponent>
   );
 };
