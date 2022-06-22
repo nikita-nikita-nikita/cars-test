@@ -1,10 +1,19 @@
 import { Cars } from "./Cars";
-import { Routes, Route } from "react-router-dom";
+import { Main } from "./Main";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 export const routing = {
   cars: {
     url: "/cars/:type",
     Component: Cars,
+  },
+  main: {
+    url: "/",
+    Component: Main,
+  },
+  notFound: {
+    url: "*",
+    Component: <Navigate to="/" replace />,
   },
 };
 

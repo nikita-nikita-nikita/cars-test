@@ -7,6 +7,9 @@ import { generatePath } from "react-router-dom";
 export const Nav = () => {
   return (
     <NavComponent variant="tabs" className="justify-content-around">
+      <NavComponent.Item>
+        <NavLink to={routing.main.url}>Main menu</NavLink>
+      </NavComponent.Item>
       {Object.values(CARS_ENUM).map((type) => (
         <NavComponent.Item key={type}>
           <NavLink to={generatePath(routing.cars.url, { type })}>
